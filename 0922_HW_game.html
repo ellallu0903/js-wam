@@ -31,61 +31,64 @@
     class="github_position"
     ><img width="45" src="./images/github.png" alt=""
   /></a>
-    <!-- 左側 -->
-    <div style="margin-top: 20px;" id="games">
-      <div class="title animate__animated animate__flipInX">
-        Catch <br>
-        soot sprite!
-      </div>
-      <br />
-      <table id="game">
-        <!-- 對應鍵盤數字的排列 -->
-        <tr>
-          <td id="hole7"></td>
-          <td id="hole8"></td>
-          <td id="hole9"></td>
-        </tr>
-        <tr>
-          <td id="hole4"></td>
-          <td id="hole5"></td>
-          <td id="hole6"></td>
-        </tr>
-        <tr>
-          <td id="hole1"></td>
-          <td id="hole2"></td>
-          <td id="hole3"></td>
-        </tr>
-      </table>
-    </div>
-    <!-- 右側 -->
-    <div class="startbox">
-      <input
-      type="button"
-      value="RULES"
-      id="rule"
-      class="rule-botton-style animate__animated animate__pulse animate__infinite animate__slower"
-    />
-      <p>Score：<span id="text-score">0</span></p>
-      <p>
-        Best Record
-        <br />
-        Player：<span id="text-highplayer"></span>
-        <br />
-        Score：<span id="text-highscore"></span>
-
-        <div id="clock-anmation" style="position: absolute; top: 56%;">
-          <div class="ldio-animation"></div>
+  <div class="flex_around">
+        <!-- 左側 -->
+        <div style="margin-top: 35px;" id="games">
+          <div class="title animate__animated animate__flipInX">
+            Catch <br>
+            soot sprite!
+          </div>
+          <br />
+          <table id="game">
+            <!-- 對應鍵盤數字的排列 -->
+            <tr>
+              <td id="hole7"></td>
+              <td id="hole8"></td>
+              <td id="hole9"></td>
+            </tr>
+            <tr>
+              <td id="hole4"></td>
+              <td id="hole5"></td>
+              <td id="hole6"></td>
+            </tr>
+            <tr>
+              <td id="hole1"></td>
+              <td id="hole2"></td>
+              <td id="hole3"></td>
+            </tr>
+          </table>
         </div>
-        <div id="secs" class="time animate__animated  animate__infinite animate__slow" style="display: inline-block ;position: relative;left: 18%;"></div>
-      </p>
-      <input
-      type="button"
-      value="START!"
-      id="btn-start"
-      class="botton-style animate__animated animate__flash animate__infinite animate__slower"
-    />
-    <br>
-    </div>
+        <!-- 右側 -->
+        <div class="startbox">
+          <input
+          type="button"
+          value="RULES"
+          id="rule"
+          class="rule-botton-style animate__animated animate__pulse animate__infinite animate__slower"
+        />
+          <p>Score：<span id="text-score">0</span></p>
+          <p>
+            Best Record
+            <br />
+            Player：<span id="text-highplayer"></span>
+            <br />
+            Score：<span id="text-highscore"></span>
+    
+            <div id="clock-anmation" style="position: absolute; top: 56%;">
+              <div class="ldio-animation"></div>
+            </div>
+            <div id="secs" class="time animate__animated  animate__infinite animate__slow" style="display: inline-block ;position: relative;left: 17.5%;">12</div>
+          </p>
+          <input
+          type="button"
+          value="START!"
+          id="btn-start"
+          class="botton-style animate__animated animate__flash animate__infinite animate__slower"
+        />
+        <br>
+        </div>
+  </div>
+
     <!-- 小煤炭動畫 -->
     <div class="smallImg1">
       <img src="./images/Susuwatari-1.png" alt="" />
@@ -103,8 +106,10 @@
     <div id="ruleImg" class="rule"></div>
     <!-- copyright -->
     <div class="copyright">Game &copy; Yi-Zhen Lu</div>
+    <!-- music -->
+    <span id="music"><img src="./images/play-button.png" /></span>
 
-
+    <script src="./jquery-3.5.1.min.js"></script>
     <script>
       const btnStart = document.getElementById("btn-start");
       const holes = document.querySelectorAll("#game td");
@@ -331,6 +336,27 @@
 
       }
 
+      //   music
+      const audio = new Audio(
+        './千と千尋の神隠し  いつも何度でも純音樂.mp3'
+      )
+      audio.play()
+      audio.loop = true
+
+      // 點圖：播放/暫停 - 音樂
+      $('#music').click(function () {
+        if ($('#music img').attr('src') === './images/play-button.png') {
+          console.log('aaa')
+
+          $('#music img').attr('src', './images/pause.png')
+          audio.pause()
+        } else {
+          console.log('123')
+
+          $('#music img').attr('src', './images/play-button.png')
+          audio.play()
+        }
+      })
 
     </script>
   </body>

@@ -7,10 +7,13 @@ body {
   background-size: cover;
   /* 鼠標，圖片 "往右/往下" 對齊鼠標的點 */
   cursor: url(./images/cursor-3.png), auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   overflow: hidden;
+}
+
+.flex_around {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .container {
@@ -98,16 +101,14 @@ body {
 
 .startbox {
   display: inline-block;
-  position: absolute;
   width: 500px;
   font-size: 35px;
   font-family: 'Press Start 2P', '微軟正黑體';
   line-height: 150%;
   text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
   -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.8);
-  top: 58%;
-  right: 3%;
-  transform: translateY(-50%);
+  align-self: flex-end;
+  position: relative;
 }
 .botton-style {
   width: 250px;
@@ -146,32 +147,34 @@ body {
 /* 小煤炭動畫 *3 */
 .smallImg1 {
   position: absolute;
-  bottom: 0%;
-  left: 3%;
+  bottom: 50%;
+  left: 0%;
   animation: smallImg1 5s alternate infinite;
 }
 .smallImg1 img {
   width: 76px;
   height: 82px;
+  transform: rotate(90deg);
 }
 @keyframes smallImg1 {
   from {
     transform: translate(0px, 0);
   }
   to {
-    transform: translate(150px, 0);
+    transform: translate(0px, 150px);
   }
 }
 
 .smallImg2 {
   position: absolute;
-  bottom: 0%;
-  left: 55%;
+  top: 0%;
+  right: 11%;
   animation: smallImg2 3s alternate infinite;
 }
 .smallImg2 img {
   width: 62px;
   height: 105px;
+  transform: rotate(180deg);
 }
 @keyframes smallImg2 {
   from {
@@ -209,12 +212,15 @@ body {
 }
 
 .copyright {
-  width: 250px;
+  width: 150px;
   height: 50px;
-  position: relative;
-  left: -750px;
-  top: 450px;
+  line-height: 50px;
   z-index: 999;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .mouse {
@@ -305,4 +311,21 @@ body {
   transform: translateZ(0) scale(1);
   backface-visibility: hidden;
   transform-origin: 0 0;
+}
+
+/* 音樂 Icon */
+#music {
+  margin-left: 10px;
+  position: absolute;
+  bottom: 0%;
+  left: 1%;
+}
+#music img {
+  height: 50px;
+}
+#music img:hover {
+  cursor: url(./images/cursor-1.cur), pointer;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5))
+    drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+  transform: scale(1.05);
 }
