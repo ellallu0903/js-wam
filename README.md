@@ -6,7 +6,6 @@
 
 ### 圖片來源：
 
-- [大熊](https://pin.it/3455txi 'Pinterest')
 - [規則圖卷軸](https://images.app.goo.gl/M4vkwa5bV1F9VKAa6 'Google Search')
 - [煤炭精靈](https://orangeography.com/Susuwatari)
 - [煤炭精靈 2](https://orangeography.com/Susuwatari 'Google Search')
