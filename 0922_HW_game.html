@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Catch soot sprite !</title>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="./images/favicon.ico" />
+    <!-- CSS_style -->
+    <link rel="stylesheet" href="./style.css">
     <!-- font -->
     <link
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
@@ -17,306 +21,18 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
 
-    <style>
-      body {
-        font-family: "Roboto Mono", monospace;
-        width: 100vw;
-        height: 100vh;
-        margin: 0;
-        background: url(./images/chihiro037.jpg) no-repeat;
-        background-size: cover;
-        /* 鼠標，圖片 "往右/往下" 對齊鼠標的點 */
-        cursor: url(./images/cursor-3.png), auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-      }
 
-      /* 格子大小 */
-      #game td {
-        width: 200px;
-        height: 200px;
-        border: 1px solid rgba(255, 255, 255, 0);
-        background-color: rgba(255, 255, 255, 0.3);
-        border-radius: 20%;
-      }
-
-      /* 出現的 */
-      .A {
-        background: url(./images/Susuwatari.png) no-repeat;
-        animation: beforeHit 1.2s infinite;
-      }
-
-      @keyframes beforeHit {
-        from {
-          background-position: 50% 60%;
-        }
-        to {
-          background-position: 50% 30%;
-        }
-      }
-
-      .C {
-        background: url(./images/star3.png) no-repeat center center;
-        animation: beforeHit 1.2s infinite;
-      }
-
-      .E {
-        background: url(./images/mouse180.png) no-repeat;
-        animation: beforeHit 1.2s infinite;
-      }
-
-      /* 打到的 */
-      .B {
-        background: url(./images/Susuwatari2.png) no-repeat;
-        animation: afterHit 1.2s infinite;
-      }
-
-      .D {
-        background: url(./images/star4.png) no-repeat;
-        animation: afterHit 1.2s infinite;
-      }
-
-      .F {
-        background: url(./images/mouse2.png) no-repeat;
-        animation: afterHit 1.2s infinite;
-      }
-      @keyframes afterHit {
-        from {
-          background-position: 50% 30%;
-          transform: scale(1);
-        }
-        to {
-          background-position: 50% 30%;
-          transform: scale(1.1);
-        }
-      }
-
-      .title {
-        font-family: "Press Start 2P", cursive;
-        font-size: 48px;
-        color: rgba(255, 255, 255, 0.8);
-        /* text-align: center; */
-        -webkit-text-stroke: 1.5px #000;
-      }
-
-      .startbox {
-        display: inline-block;
-        position: relative;
-        width: 500px;
-        font-size: 35px;
-        font-family: "Press Start 2P", '微軟正黑體';
-        line-height: 150%;
-        text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
-        -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.8);
-        position: relative;
-        top: 5%;
-        left: 5%;
-      }
-      .botton-style {
-        width: 250px;
-        height: 70px;
-        color: white;
-        border-radius: 10px;
-        font-size: 28px;
-        font-family: "Press Start 2P", cursive;
-        background-color: rgba(232, 48, 21, 0.7);
-        border: 3px solid rgba(232, 48, 21, 0.9);
-      }
-      .botton-style:hover {
-        cursor: url(./images/cursor-1.cur), pointer;
-        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5))
-          drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
-        transform: scale(1.05);
-      }
-
-      .rule-botton-style {
-        width: 250px;
-        height: 70px;
-        color: white;
-        border-radius: 10px;
-        font-size: 28px;
-        font-family: "Press Start 2P", cursive;
-        background-color: rgba(233, 139, 42, 0.7);
-        border: 3px solid rgba(233, 139, 42, 0.9);
-      }
-      .rule-botton-style:hover {
-        cursor: url(./images/cursor-1.cur), pointer;
-        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5))
-          drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
-        transform: scale(1.05);
-      }
-
-      /* 小煤炭動畫 *3 */
-      .smallImg1 {
-        position: relative;
-        top: 420px;
-        left: -1400px;
-        animation: smallImg1 5s alternate infinite;
-      }
-      .smallImg1 img {
-        width: 76px;
-        height: 82px;
-      }
-      @keyframes smallImg1 {
-        from {
-          transform: translate(0px, 0);
-        }
-        to {
-          transform: translate(150px, 0);
-        }
-      }
-
-      .smallImg2 {
-        position: relative;
-        top: 400px;
-        left: -100px;
-        animation: smallImg2 3s alternate infinite;
-      }
-      .smallImg2 img {
-        width: 62px;
-        height: 105px;
-      }
-      @keyframes smallImg2 {
-        from {
-          transform: translate(150px, 0);
-        }
-        to {
-          transform: translate(0px, 0);
-        }
-      }
-      .smallImg3 {
-        position: relative;
-        top: 380px;
-        left: 100px;
-        animation: smallImg3 1s alternate infinite;
-      }
-      .smallImg3 img {
-        width: 113px;
-        height: 186px;
-      }
-      @keyframes smallImg3 {
-        from {
-          transform: translate(0, 0);
-        }
-        to {
-          transform: translate(0, -50px);
-        }
-      }
-
-      .time {
-        font-family: 'Anton', sans-serif;
-        font-size: 50px;
-          text-align: center;
-          transform: translateX(-30%);
-          color:rgba(232, 48, 21, 0.8);
-      }
-
-
-      .copyright {
-        width: 250px;
-        height: 50px;
-        position: relative;
-        left: -750px;
-        top: 450px;
-        z-index: 999;
-      }
-
-      .mouse {
-        cursor: url(./images/cursor-2.cur), auto;
-      }
-
-      .win {
-        width:1000px;
-        height: 1000px;
-        background-image: url(./images/win2.png);
-        background-repeat: no-repeat;
-        background-size:contain;
-        position: absolute;
-        top: 15%;
-        left: 5%;
-      }
-
-
-      .lose {
-        width: 1400px;
-        height: 1400px;
-        background-image: url(./images/lose3.png);
-        background-repeat: no-repeat;
-        background-size:contain;
-        position: absolute;
-        top: 25%;
-        left: 28%;
-      }
-
-      .high {
-       width: 1000px;
-       height: 1000px; 
-       background-image: url(./images/highscore.png);
-        background-repeat: no-repeat;
-        background-size:contain;
-        position: absolute;
-        top: 25%;
-        left: 22%;
-      }
-
-      .rule {
-        width: 630px;
-        height: 780px;
-        background-image: url(./images/RULES.png);
-        background-repeat: no-repeat;
-        background-size:contain;
-        position: absolute;
-        top: 10%;
-        left: 33%;
-      }
-      
-      .rule:hover {
-        cursor: url(./images/cursor-1.cur), pointer;
-        filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.5))
-          drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
-        transform: scale(1.01);
-      }
-
-      /* clock animation */
-      /* generated by https://loading.io/ */
-      @keyframes ldio-clo67sannlt {
-        0% {
-          transform: translate(-50%, -50%) rotate(0deg);
-        }
-        100% {
-          transform: translate(-50%, -50%) rotate(360deg);
-        }
-      }
-      .ldio-clo67sannlt div {
-        position: absolute;
-        width: 80px;
-        height: 80px;
-        border: 12px solid rgba(232, 48, 21, 0.7);
-        border-top-color: transparent;
-        border-radius: 50%;
-        box-sizing: content-box;
-      }
-      .ldio-animation {
-        animation: ldio-clo67sannlt 1s linear infinite;
-        top: 100px;
-        left: 100px;
-      }
-      .ldio-clo67sannlt {
-        width: 100%;
-        height: 100%;
-        position: relative;
-        transform: translateZ(0) scale(1);
-        backface-visibility: hidden;
-        transform-origin: 0 0;
-        
-      }
-    </style>
   </head>
   <body id="container">
+    <a
+    style="z-index: 9999"
+    href="https://github.com/ellallu0903/js-wam"
+    target="_blank"
+    class="github_position"
+    ><img width="45" src="./images/github.png" alt=""
+  /></a>
     <!-- 左側 -->
-    <div style="margin:20px 50px 20px 300px" id="games">
+    <div style="margin-top: 20px;" id="games">
       <div class="title animate__animated animate__flipInX">
         Catch <br>
         soot sprite!
@@ -384,7 +100,7 @@
     <div id="win" class="animate__animated animate__slow"></div>
     <div id="lose" class="animate__animated animate__slow "></div>
     <div id="high" class="animate__animated animate__slow"></div>
-    <div id="ruleImg"></div>
+    <div id="ruleImg" class="rule"></div>
     <!-- copyright -->
     <div class="copyright">Game &copy; Yi-Zhen Lu</div>
 
@@ -539,8 +255,6 @@
         clock_anmation.classList.remove("ldio-clo67sannlt")
       };  
 
-
-       
 
       // 點到煤炭 → 消除煤炭 → 變成星星煤炭
       for (const hole of holes) {
